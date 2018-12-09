@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="sample-devk test server">
+
+	<featureManager>
+		<feature>cdi-2.0</feature>
+		<feature>jaxrs-2.1</feature>
+		<feature>jpa-2.2</feature>
+		<feature>jsonp-1.1</feature>
+		<feature>mpConfig-1.3</feature>
+		<feature>mpFaultTolerance-1.1</feature>
+		<feature>mpHealth-1.0</feature>
+		<feature>mpMetrics-1.1</feature>
+		<feature>mpOpenAPI-1.0</feature>
+		<feature>mpOpenTracing-1.1</feature>
+		<feature>beanValidation-2.0</feature>
+		<feature>localConnector-1.0</feature>		
+	</featureManager>
+
+
+
+
+
+	<basicRegistry id="basic" realm="BasicRealm">
+	</basicRegistry>
+
+
+	<httpEndpoint host="*" httpPort="9080" httpsPort="9443"
+		id="defaultHttpEndpoint" />
+
+	<applicationManager autoExpand="true" />
+
+
+	<applicationMonitor updateTrigger="mbean" />
+
+
+
+	<dataSource id="DefaultDataSource"
+		jndiName="jdbc/derbyEmbedded">
+		<jdbcDriver libraryRef="jdbcDriverFiles" />
+		<properties.derby.embedded
+			databaseName="SAMPLEDB" createDatabase="create" />
+	</dataSource>
+
+	<library id="jdbcDriverFiles">
+		<file name="${shared.resource.dir}/derby/derby.jar" />
+	</library>
+
+
+
+
+
+
+</server>

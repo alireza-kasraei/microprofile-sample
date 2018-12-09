@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
+   <localRepository>D:/repos4</localRepository>
+   <mirrors>
+      <mirror>
+         <id>repos</id>
+         <mirrorOf>*,!backbase-repo</mirrorOf>
+         <!--<mirrorOf>*</mirrorOf>-->
+         <name>repos</name>
+         <!--<url>http://192.168.54.67:8081/artifactory/main-repo/</url>-->
+         <!-- <url>http://localhost:8081/artifactory/repo1</url> -->
+         <url>http://192.168.54.68:9091/nexus/content/groups/public</url>
+      </mirror>
+      <mirror>
+         <id>backbase-mirror</id>
+         <mirrorOf>backbase-repo</mirrorOf>
+         <name>backbase-mirror</name>
+         <url>http://192.168.53.58:8081/nexus/content/groups/public</url>
+      </mirror>
+   </mirrors>
+   
+   <profiles>
+      <profile>
+         <id>backbase</id>
+         <repositories>
+            <!--
+			  <repository>
+				  <id>archetype</id>
+				  <url>https://repo1.maven.org/maven2</url>
+				  <releases>
+					<enabled>true</enabled>
+				  </releases>
+			  </repository>-->
+			  
+            <repository>
+               <id>backbase-repo</id>
+               <url>https://repo.backbase.com/repo/</url>
+            </repository>
+         </repositories>
+         <pluginRepositories>
+            <!--
+			<pluginRepository>
+			  <id>central</id>
+			  <url>https://repo1.maven.org/maven2</url>
+			  <releases>
+				<enabled>true</enabled>
+			  </releases>
+			</pluginRepository>
+			-->
+            <pluginRepository>
+               <id>backbase-repo</id>
+               <url>https://repo.backbase.com/repo/</url>
+            </pluginRepository>
+         </pluginRepositories>
+      </profile>
+      <profile>
+         <id>nexus</id>
+         <!--Enable snapshots for the built in central repo to direct -->
+         <!--all requests to nexus via the mirror -->
+         <repositories>
+            <repository>
+               <id>central</id>
+               <url>http://central</url>
+               <releases>
+                  <enabled>true</enabled>
+               </releases>
+               <snapshots>
+                  <enabled>true</enabled>
+               </snapshots>
+            </repository>
+         </repositories>
+         <pluginRepositories>
+            <pluginRepository>
+               <id>central</id>
+               <url>http://central</url>
+               <releases>
+                  <enabled>true</enabled>
+               </releases>
+               <snapshots>
+                  <enabled>true</enabled>
+               </snapshots>
+            </pluginRepository>
+         </pluginRepositories>
+      </profile>
+   </profiles>
+   <servers>
+      <server>
+         <id>nexus</id>
+         <username>deployment</username>
+         <password>123456</password>
+      </server>
+      <!--<server>
+            <id>Backbase Artifact Repository</id>
+            <username>blackrockme_portal_p5</username>
+            <password>blackrockme_portal_0507</password>
+        </server>
+		-->
+   </servers>
+   <activeProfiles>
+      <activeProfile>nexus</activeProfile>
+   </activeProfiles>
+</settings>

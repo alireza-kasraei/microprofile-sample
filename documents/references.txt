@@ -1,0 +1,2 @@
+https://stackoverflow.com/questions/1724774/java-data-transfer-object-naming-convention
+https://stackoverflow.com/questions/4687271/jax-rs-how-to-return-json-and-http-status-code-together
